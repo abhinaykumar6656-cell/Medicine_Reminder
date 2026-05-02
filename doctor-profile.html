@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Profile - Medicine Reminder </title>
+<link rel="stylesheet" href="style.css?v=500">
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>💊 Medicine Reminder </h1>
+    <p>Doctor Profile</p>
+  </div>
+
+  <div class="row">
+    <button onclick="location.href='doctor-dashboard.html'">⬅ Dashboard</button>
+    <button onclick="toggleDark()">🌙</button>
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card authCard">
+    <h2>👨‍⚕️ Doctor Profile</h2>
+
+    <input type="text" id="profileName" placeholder="Doctor Name">
+    <input type="text" id="specialization" placeholder="Specialization">
+    <input type="text" id="hospital" placeholder="Hospital / Clinic">
+    <input type="text" id="profilePhone" placeholder="Phone Number">
+
+    <button onclick="saveProfile()">Save Profile</button>
+    <p id="profileMsg"></p>
+  </section>
+</main>
+
+<script type="module" src="firebase-config.js?v=500"></script>
+<script type="module" src="app.js?v=500"></script>
+</body>
+</html>

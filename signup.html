@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Medicine Reminder </title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>💊 Medicine Reminder </h1>
+    <p>Create New Account</p>
+  </div>
+  <button onclick="toggleDark()">🌙</button>
+</header>
+
+<main class="centerWrap">
+  <div class="authCard">
+    <h2>Register</h2>
+    <p>Create account as Patient or Doctor</p>
+
+    <input id="email" type="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+
+    <select id="role">
+      <option value="patient">🧑 Patient</option>
+      <option value="doctor">🩺 Doctor</option>
+    </select>
+
+    <button onclick="signupUser()">Create Account</button>
+
+    <p class="smallText">
+      Already have account?
+      <a href="login.html">Login</a>
+    </p>
+
+    <p id="authMsg" class="error"></p>
+  </div>
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

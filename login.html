@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="style.css?v=2000">
+</head>
+<body>
+
+<div class="container">
+  <div class="card authCard">
+    <h2>Login</h2>
+
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button id="loginBtn">Login</button>
+    <p id="authMsg" style="color:red;"></p>
+  </div>
+</div>
+
+<script type="module">
+import { auth, db } from "./firebase-config.js?v=2000";
+import {
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const msg = document.getElementById("authMsg");
+
+  try {
+    msg.innerText = "Logging in...";
+    await signInWithEmailAndPassword(auth, email, password);
+    window.location.href = "patient-dashboard.html";
+  } catch (error) {
+    msg.innerText = error.message;
+    console.error(error);
+  }
+});
+</script>
+
+</body>
+</html>

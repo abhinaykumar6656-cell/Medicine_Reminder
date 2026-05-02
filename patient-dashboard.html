@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Dashboard - Medicine Reminder </title>
+
+<link rel="stylesheet" href="style.css?v=507">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>💊 Medicine Reminder </h1>
+    <p>Patient Dashboard</p>
+  </div>
+
+  <div class="row">
+    <button onclick="toggleDark()">🌙</button>
+    <button onclick="location.href='patient-profile.html'">👤 Profile</button>
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="card">
+  <h2>👤 Welcome Patient</h2>
+  <p id="welcomePatient"></p>
+</section>
+
+<section class="grid3">
+  <div class="card center">
+    <h3>💊 Total Medicines</h3>
+    <h2 id="patientTotalMeds">0</h2>
+  </div>
+
+  <div class="card center">
+    <h3>✅ Taken</h3>
+    <h2 id="patientTaken">0</h2>
+  </div>
+
+  <div class="card center">
+    <h3>❌ Missed</h3>
+    <h2 id="patientMissed">0</h2>
+  </div>
+</section>
+
+<section class="grid2">
+
+  <div class="card">
+    <h3>💊 Today's Medicines</h3>
+    <div id="medicineList"></div>
+  </div>
+
+  <div class="card">
+    <h3>📊 Medication Progress</h3>
+    <canvas id="reportChart"></canvas>
+    <p id="reportText"></p>
+  </div>
+
+  <div class="card">
+    <h3>📋 My Medication Report</h3>
+    <div id="patientReportDetails"></div>
+  </div>
+
+  <div class="card">
+    <h3>📅 Calendar</h3>
+    <div id="calendar"></div>
+  </div>
+
+  <div class="card">
+    <h3>🩺 Submit Health Report</h3>
+
+    <input type="text" id="issue" placeholder="Health Issue">
+    <input type="text" id="symptoms" placeholder="Symptoms">
+    <input type="number" id="sufferingDays" placeholder="Suffering Since (Days)">
+    <input type="number" id="painLevel" placeholder="Pain Level (1-10)">
+    <input type="text" id="notes" placeholder="Extra Notes">
+
+    <button onclick="submitHealthReport()">Submit Report</button>
+
+    <div id="myHealthReports"></div>
+  </div>
+
+  <div class="card">
+    <h3>💬 Chat with Doctor</h3>
+
+    <input type="email" id="doctorEmail" placeholder="Doctor Email">
+    <div id="chatBox" class="chatBox"></div>
+
+    <input type="file" id="patientPhotos" accept="image/*" multiple>
+    <p class="hint">Attach one or more medicine photos if you have a doubt about taking them.</p>
+
+    <div class="voiceTools">
+      <button type="button" id="recordVoiceBtn" onclick="startVoiceRecording()">🎤 Record Voice</button>
+      <button type="button" id="stopVoiceBtn" onclick="stopVoiceRecording()" disabled>Stop</button>
+      <button type="button" id="removeVoiceBtn" onclick="removeVoiceRecording()" disabled>Remove</button>
+    </div>
+    <p id="voiceStatus" class="hint">No voice message recorded.</p>
+
+    <div class="row">
+      <input type="text" id="patientMessage" placeholder="Type message">
+      <button type="button" id="sendPatientBtn">Send</button>
+    </div>
+    <p id="chatStatus" class="hint"></p>
+  </div>
+
+  <div class="card">
+    <h3>📅 Book Appointment</h3>
+
+    <input type="email" id="appointDoctor" placeholder="Doctor Email">
+    <input type="date" id="appointDate">
+    <input type="time" id="appointTime">
+
+    <button onclick="bookAppointment()">Book Appointment</button>
+
+    <div id="myAppointments"></div>
+  </div>
+
+  <div class="card">
+    <h3>🚨 Emergency</h3>
+
+    <button class="danger" onclick="sendEmergency()">Emergency Alert</button>
+    <button onclick="findHospitals()">📍 Nearby Hospitals</button>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+Follow prescribed medicines regularly. Contact doctor for any issues.
+</footer>
+
+<script type="module" src="firebase-config.js?v=507"></script>
+<script type="module" src="app.js?v=507"></script>
+
+</body>
+</html>

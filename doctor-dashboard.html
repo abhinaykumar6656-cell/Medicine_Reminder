@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Dashboard - Medicine Reminder</title>
+
+<link rel="stylesheet" href="style.css?v=507">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>💊 Medicine Reminder</h1>
+    <p>Doctor Dashboard</p>
+  </div>
+
+  <div class="row">
+    <button onclick="toggleDark()">🌙</button>
+    <button onclick="location.href='doctor-profile.html'">👨‍⚕️ Profile</button>
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="card">
+  <h2>🩺 Welcome Doctor</h2>
+  <p id="welcomeDoctor"></p>
+</section>
+
+<section class="grid3">
+  <div class="card center">
+    <h3>👥 Total Patients</h3>
+    <h2 id="totalPatients">0</h2>
+  </div>
+
+  <div class="card center">
+    <h3>💊 Prescriptions</h3>
+    <h2 id="totalRx">0</h2>
+  </div>
+
+  <div class="card center">
+    <h3>💬 Messages</h3>
+    <h2 id="totalMsgs">0</h2>
+  </div>
+</section>
+
+<section class="card">
+  <h3>➕ Add Prescription</h3>
+
+  <input type="email" id="patientEmail" placeholder="Patient Email">
+  <input type="text" id="mname" placeholder="Medicine Name">
+  <input type="text" id="dose" placeholder="Dosage">
+  <input type="time" id="time">
+  <input type="number" id="days" placeholder="Duration in Days">
+
+  <button onclick="addPrescription()">Assign Prescription</button>
+</section>
+
+<section class="grid2">
+
+<div class="card">
+  <h3>📋 Assigned Prescriptions</h3>
+  <div id="allPrescriptions"></div>
+</div>
+
+<div class="card">
+  <h3>📊 Patient Medication Reports</h3>
+  <div id="doctorPatientReports"></div>
+</div>
+
+<div class="card">
+  <h3>🩺 Patient Health Reports</h3>
+  <div id="doctorHealthReports"></div>
+</div>
+
+<!-- ✅ FIXED APPOINTMENT SECTION -->
+<div class="card">
+  <h3>📅 Patient Appointments</h3>
+  <div id="doctorAppointments"></div>
+</div>
+
+<div class="card">
+  <h3>💬 Patient Messages</h3>
+
+  <input type="email" id="chatPatientEmail" placeholder="Patient Email">
+  <div id="doctorChatBox" class="chatBox"></div>
+
+  <input type="file" id="doctorPhotos" accept="image/*" multiple>
+  <p class="hint">Attach one or more photos when replying to the patient.</p>
+
+  <div class="voiceTools">
+    <button type="button" id="recordVoiceBtn" onclick="startVoiceRecording()">🎤 Record Voice</button>
+    <button type="button" id="stopVoiceBtn" onclick="stopVoiceRecording()" disabled>Stop</button>
+    <button type="button" id="removeVoiceBtn" onclick="removeVoiceRecording()" disabled>Remove</button>
+  </div>
+  <p id="voiceStatus" class="hint">No voice message recorded.</p>
+
+  <div class="row">
+    <input type="text" id="doctorMessage" placeholder="Reply patient">
+    <button type="button" id="sendDoctorBtn">Send</button>
+  </div>
+  <p id="chatStatus" class="hint"></p>
+</div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  Digital Doctor Control Panel
+</footer>
+
+<script type="module" src="firebase-config.js?v=507"></script>
+<script type="module" src="app.js?v=507"></script>
+
+</body>
+</html>
